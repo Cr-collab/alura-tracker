@@ -1,27 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <main class="columns is-gapless is-multiline">
+      <!-- a tag main vai comportar tudo na nossa aplicação   -->
+      <!-- 
+         columns -> esta falando que a nossa aplicação vai ter varias colunas 
+         is-gapless -> diz que não vai ter espaçamentos entre nossas colunas 
+         is-multiline -> ele pode permitir multiplas linhas 
+        -->
+
+        <!-- 
+           dividir em duas porções 
+        -->
+
+        <div class="column is-one-quarter"> 
+          <!-- 
+
+            -->
+            <BarraLateral/>
+
+        </div>
+        <!-- cada div são uma porção   -->
+        <div class="column is-three-quarter">
+           <Formulario/>
+        </div>
+    </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+
+import BarraLateral from '../src/components/BarraLateral.vue'
+import Formulario from './components/Formulario.vue';
+
+
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    BarraLateral,
+    Formulario  
   }
 });
+
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
