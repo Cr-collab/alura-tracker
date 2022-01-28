@@ -15,11 +15,11 @@
 
                 <section>
                   <strong>
-                    00:00:00
+                    {{tempoDecorrido}}
                   </strong>
                 </section>
 
-                <button class="button">
+                <button class="button" @click="iniciar">
                   <span class="icon">
                     <i class="fas fa-play">
 
@@ -28,7 +28,7 @@
                     <span> play </span>
                 </button>
 
-                <button class="button">
+                <button class="button" @click="finalizar">
                   <span class="icon">
                     <i class="fas fa-stop">
                       
@@ -46,7 +46,30 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name: 'Formulario'
+    name: 'Formulario',
+    data() {
+         return {
+           tempoEmSegundos: 0
+         }
+    },
+    computed:{
+         tempoDecorrido() : string{
+           return new Date(this.tempoEmSegundos * 1000).toISOString().substr(11, 8);
+         }
+    },
+    methods:{
+      iniciar(){
+           // comecar a contagem 
+           setInterval(()=>{
+             this.tempoEmSegundos += 1
+           }, 1000)
+          console.log('iniciando')
+      },
+      finalizar(){
+        console.log("finalizando")
+      }
+
+    }
 })
 </script>
 
