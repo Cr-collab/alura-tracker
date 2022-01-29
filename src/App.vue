@@ -1,48 +1,53 @@
 <template>
-    <main class="columns is-gapless is-multiline">
-      <!-- a tag main vai comportar tudo na nossa aplicação   -->
-      <!-- 
+  <main class="columns is-gapless is-multiline">
+    <!-- a tag main vai comportar tudo na nossa aplicação   -->
+    <!-- 
          columns -> esta falando que a nossa aplicação vai ter varias colunas 
          is-gapless -> diz que não vai ter espaçamentos entre nossas colunas 
          is-multiline -> ele pode permitir multiplas linhas 
         -->
 
-        <!-- 
+    <!-- 
            dividir em duas porções 
         -->
 
-        <div class="column is-one-quarter"> 
-          <!-- 
+    <div class="column is-one-quarter">
+      <!-- 
 
             -->
-            <BarraLateral/>
-
-        </div>
-        <!-- cada div são uma porção   -->
-        <div class="column is-three-quarter">
-           <Formulario/>
-        </div>
-    </main>
+      <BarraLateral />
+    </div>
+    <!-- cada div são uma porção   -->
+    <div class="column is-three-quarter">
+      <Formulario />
+      <div class="lista">
+        <Tarefa />
+        <Tarefa />
+        <Tarefa />
+      </div>
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 import BarraLateral from '../src/components/BarraLateral.vue'
-import Formulario from './components/Formulario.vue';
-
-
+import Formulario from './components/Formulario.vue'
+import Tarefa from './components/Tarefa.vue'
 
 export default defineComponent({
   name: 'App',
-  components:{
+  components: {
     BarraLateral,
-    Formulario  
-  }
-});
-
+    Formulario,
+    Tarefa,
+  },
+})
 </script>
 
 <style scoped>
-
+.lista {
+  padding: 1.25rem;
+}
 </style>
