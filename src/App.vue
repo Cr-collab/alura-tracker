@@ -1,5 +1,8 @@
 <template>
-  <main class="columns is-gapless is-multiline">
+  <main
+    class="columns is-gapless is-multiline"
+    :class="{ 'modo-escuro': modoEscuroAtivo }"
+  >
     <!-- a tag main vai comportar tudo na nossa aplicação   -->
     <!-- 
          columns -> esta falando que a nossa aplicação vai ter varias colunas 
@@ -15,10 +18,10 @@
       <!-- 
 
             -->
-      <BarraLateral />
+      <BarraLateral @aoTemaAlterado="trocarTema" />
     </div>
     <!-- cada div são uma porção   -->
-    <div class="column is-three-quarter">
+    <div class="column is-three-quarter conteudo">
       <Formulario @aoSalvarTarefa="salvarTarefa" />
       <div class="lista">
         <Tarefa
@@ -54,11 +57,15 @@ export default defineComponent({
   data() {
     return {
       tarefas: [] as ITarefa[],
+      modoEscuroAtivo: false,
     }
   },
   methods: {
     salvarTarefa(tarefa: ITarefa) {
       this.tarefas.push(tarefa)
+    },
+    trocarTema(modoEscuroAtivo: boolean) {
+      this.modoEscuroAtivo = modoEscuroAtivo
     },
   },
   computed: {
@@ -72,5 +79,19 @@ export default defineComponent({
 <style scoped>
 .lista {
   padding: 1.25rem;
+}
+
+main {
+  --bg-primario: #fff;
+  --texto-primario: #000;
+}
+
+main.modo-escuro {
+  --bg-primario: #2b2d42;
+  --texto-primario: #fff;
+}
+
+.conteudo {
+  background-color: var(--bg-primario);
 }
 </style>
